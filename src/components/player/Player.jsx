@@ -7,8 +7,8 @@ import Timestamps from './components/Timestamps.jsx';
 import './Player.scss';
 
 function Player(props) {
-    const [ isPlaying, togglePlay ] = useState(true);
-    const [ currentTime, updateTime ] = useState(0);
+    const [isPlaying, togglePlay] = useState(true);
+    const [currentTime, updateTime] = useState(0);
 
     const handleUpdateTime = (timestamp) => updateTime(Math.floor(timestamp))
     const updateScrubber = (percent) => {
@@ -35,14 +35,17 @@ function Player(props) {
     return (
         <div className="Player">
             <div className="Background" style={{ 'backgroundImage': `url(${props.track.artwork})` }}></div>
-            <div className="Artwork" style={{ 'backgroundImage': `url(${props.track.artwork})` }}></div>
-            <TrackInformation track={props.track} />
-            <Scrubber />
-            <Controls isPlaying={isPlaying} onClick={handleTogglePlay} />
-            <Timestamps duration={props.track.duration} currentTime={currentTime} />
-            <audio id="audio">
-                <source src={props.track.source} />
-            </audio>
+            <div className="Content">
+                <TrackInformation track={props.track} />
+            </div>
+            <div className="Footer">
+                <Scrubber />
+                <Controls isPlaying={isPlaying} onClick={handleTogglePlay} />
+                <Timestamps duration={props.track.duration} currentTime={currentTime} />
+                <audio id="audio">
+                    <source src={props.track.source} />
+                </audio>
+            </div>
         </div>
     );
 

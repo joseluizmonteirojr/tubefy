@@ -3,11 +3,9 @@ import Player from './components/player/Player.jsx';
 import './App.scss';
 
 function App() {
-  return (
-    <div className="App">
-      <Player />
-    </div>
-  );
+	return (
+		<Player />
+	);
 }
 
 export default App;
